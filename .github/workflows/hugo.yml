@@ -39,10 +39,10 @@ jobs:
         with:
           submodules: recursive # テーマなどでサブモジュールを使っている場合
 
-      - name: Setup Node.js (for Tailwind CSS)
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+#      - name: Setup Node.js (for Tailwind CSS)
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: '20'
           # cache: 'npm'  <-- ★削除: package-lock.jsonがないとエラーになるため無効化
 
 #      - name: Install dependencies (Tailwind etc.)
@@ -62,7 +62,7 @@ jobs:
           HUGO_ENV: production
         run: |
           # Tailwindのビルド（package.jsonのスクリプトに合わせて調整）
-          npm run build:css
+#          npm run build:css
           # Hugoのビルド
           hugo --minify
 
