@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+    {{ template "_internal/opengraph.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ block "head" . }}{{ end }}
+</head>
+<body>
+
+<div class="site-container">
+
+    <!-- Left column: Text area (Desktop only) -->
+    <div class="text-area hidden md:flex">
+        
+        <div>
+            <!-- Logo -->
+            <header>
+                <div class="flex items-center gap-4"> <!-- Flex container for logo and search -->
+                    <div class="site-logo">Lounge.</div>
+                    <a href="{{ "/search/" | relURL }}" class="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </a>
+                </div>
+            </header>
+
+            <!-- Main navigation -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{{ "/" | relURL }}">Home</a></li>
+                    <li><a href="{{ "/article/" | relURL }}">Article</a></li>
+                    <li><a href="{{ "/works/" | relURL }}">Works</a></li>
+                    <li><a href="{{ "/author/" | relURL }}">Author</a></li>
+                    <li><a href="{{ "/links/" | relURL }}">Links</a></li>
+                    <li><a href="{{ "/contact/" | relURL }}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Clock -->
+        <div class="clock-area">
+            <span id="current-date"></span>
+            <span id="current-time"></span>
+        </div>
+
+    </div>
+
+    <!-- Right column: Content area (All screen sizes) -->
+    <div class="visual-wrapper{{ if not .IsHome }} content-wrapper{{ end }}" id="main-content">
+        {{ block "main" . }}{{ end }}
+    </div>
+
+</div>
+
+<!-- Mobile Navigation (Mobile only) -->
+<div class="block md:hidden">
+    {{ partial "mobile_nav.html" . }}
+</div>
+
+<script>
+    // --- Mobile Nav Functions ---
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const line1 = document.getElementById('line1');
+        const line2 = document.getElementById('line2');
+        const isClosed = menu.classList.contains('translate-y-full');
+        if (isClosed) {
+            menu.classList.remove('translate-y-full');
+            line1.classList.add('rotate-45', 'translate-y-2');
+            line2.classList.remove('w-4');
+            line2.classList.add('w-6', '-rotate-45'); 
+        } else {
+            menu.classList.add('translate-y-full');
+            line1.classList.remove('rotate-45', 'translate-y-2');
+            line2.classList.add('w-4');
+            line2.classList.remove('w-6', '-rotate-45');
+        }
+    }
+
+    function toggleSearch() {
+        window.location.href = "{{ "/search/" | relURL }}";
+    }
+
+    // --- Common Functions ---
+    function updateClockCommon() {
+        const now = new Date();
+        const dateStr = now.getFullYear() + '.' + String(now.getMonth() + 1).padStart(2, '0') + '.' + String(now.getDate()).padStart(2, '0');
+        const timeStr = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0') + ':' + String(now.getSeconds()).padStart(2, '0');
+        
+        const elDateDesktop = document.getElementById('current-date');
+        const elTimeDesktop = document.getElementById('current-time');
+        if(elDateDesktop) elDateDesktop.textContent = dateStr;
+        if(elTimeDesktop) elTimeDesktop.textContent = timeStr;
+
+        const elDateMobile = document.getElementById('clock-date');
+        const elTimeMobile = document.getElementById('clock-time');
+        if(elDateMobile) elDateMobile.textContent = dateStr;
+        if(elTimeMobile) elTimeMobile.textContent = timeStr;
+    }
+    setInterval(updateClockCommon, 1000);
+    updateClockCommon();
+
+    // --- ToC Toggle ---
+    const searchInputPage = document.getElementById('search-input-page');
+    if (searchInputPage) {
+        const searchResultsPage = document.getElementById('search-results-page');
+        let searchIndexPage = [];
+
+        // Fetch and combine search indexes
+        Promise.all([
+            fetch('{{ "/article/index.json" | relURL }}').then(res => res.json()),
+            fetch('{{ "/works/index.json" | relURL }}').then(res => res.json())
+        ]).then(data => {
+            searchIndexPage = [].concat.apply([], data);
+            searchInputPage.focus(); // Focus after index is loaded
+        }).catch(err => console.error('Failed to load search index:', err));
+
+        searchInputPage.addEventListener('input', () => {
+            const query = searchInputPage.value.toLowerCase();
+            if (query.length < 2) {
+                searchResultsPage.innerHTML = '';
+                return;
+            }
+
+            const results = searchIndexPage.filter(item => {
+                return (
+                    item.title.toLowerCase().includes(query) ||
+                    (item.content && item.content.toLowerCase().includes(query)) ||
+                    (item.summary && item.summary.toLowerCase().includes(query))
+                );
+            });
+
+            displayResultsPage(results);
+        });
+
+        function displayResultsPage(results) {
+            if (!results.length) {
+                searchResultsPage.innerHTML = '<p class="text-gray-500">No results found.</p>';
+                return;
+            }
+
+            const html = results.map(item => `
+                <div class="mb-6">
+                    <a href="${item.uri}" class="text-xl hover:underline">${item.title}</a>
+                    <p class="text-gray-400 text-sm mt-1">${item.summary || ''}</p>
+                </div>
+            `).join('');
+
+            searchResultsPage.innerHTML = html;
+        }
+    }
+</script>
+</script>
+
+</body>
+</html>

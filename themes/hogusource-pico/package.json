@@ -1,0 +1,14 @@
+{
+  "name": "hogusource-tailwind",
+  "version": "1.0.0",
+  "description": "Hogusource theme refreshed with Tailwind CSS",
+  "scripts": {
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --minify",
+    "watch:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "@tailwindcss/typography": "^0.5.10"
+  }
+}
+

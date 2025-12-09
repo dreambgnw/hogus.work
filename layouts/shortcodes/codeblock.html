@@ -1,24 +1,18 @@
-<div class="code-wrapper">
-  <div class="code-header card-glass">
-    <span class="code-lang">markdown</span>
-    <button class="copy-btn">⧉</button>
+<div class="bg-gray-100 dark:bg-black border border-gray-200 dark:border-white rounded-lg overflow-hidden my-6">
+  <div class="bg-gray-200 dark:bg-black px-4 py-2 flex justify-between items-center">
+    <span class="text-sm font-mono text-gray-600 dark:text-white">{{ .Get "lang" | default "text" }}</span>
+    <button class="copy-btn text-sm text-gray-600 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">⧉</button>
   </div>
-
-  <pre><code>{{ .Inner | safeHTML }}</code></pre>
+  <pre class="p-4 overflow-x-auto bg-gray-50 dark:bg-black"><code class="text-sm font-mono text-gray-800 dark:text-gray-200">{{ .Inner | safeHTML }}</code></pre>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
-  document.querySelectorAll(".code-wrapper").forEach((wrapper) => {
-
-    const btn = wrapper.querySelector(".copy-btn");
-    const codeBlock = wrapper.querySelector("code");
-
-    if (!btn || !codeBlock) return;
-
+  document.querySelectorAll(".copy-btn").forEach(btn => {
     btn.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(codeBlock.textContent);
+      const wrapper = btn.closest('.bg-gray-100');
+      const code = wrapper.querySelector('code');
+      await navigator.clipboard.writeText(code.textContent);
 
       btn.classList.add("copied");
       btn.textContent = "✓";
@@ -27,8 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.textContent = "⧉";
       }, 1200);
     });
-
   });
-
 });
 </script>

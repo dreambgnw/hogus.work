@@ -1,0 +1,131 @@
+<!-- Tailwind風ナビゲーションバー -->
+<nav class="fixed top-0 left-0 w-full h-16 bg-white dark:bg-black border-b border-gray-200 dark:border-white shadow-sm z-50">
+  <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+    <!-- ロゴ -->
+    <div class="flex items-center">
+      <a href="/" class="flex items-center transition-opacity hover:opacity-80">
+        <img src="/img/quickinstant.png" height="40" width="140" alt="hogusource logo" class="h-10 w-auto dark:hidden">
+        <img src="/img/quickinstant-dark.png" height="40" width="140" alt="hogusource logo" class="h-10 w-auto hidden dark:block">
+      </a>
+    </div>
+
+    <!-- デスクトップメニュー -->
+    <ul class="hidden md:flex items-center gap-1 list-none m-0 p-0">
+      <li>
+        <a href="{{ "/" | relURL }}" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900">
+          Home
+        </a>
+      </li>
+      <li class="relative group">
+        <a href="{{ "/article/content" | relURL }}" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 flex items-center gap-1">
+          Content
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+        <ul class="absolute top-full left-0 mt-1 bg-white dark:bg-black border border-gray-200 dark:border-white rounded-lg shadow-lg min-w-[200px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
+          <li>
+            <a href="{{ "/article/" | relURL }}" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors">
+              Article
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/works/" | relURL }}" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors">
+              Works
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/earphones/" | relURL }}" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors">
+              Earphones
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/author/" | relURL }}" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors">
+              Author
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/links/" | relURL }}" class="block px-4 py-2.5 text-sm text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors">
+              Links
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="{{ "/contact/" | relURL }}" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900">
+          Contact
+        </a>
+      </li>
+      <li>
+        <a href="{{ "/search/" | relURL }}" class="px-4 py-2 text-sm font-medium text-gray-700 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 flex items-center">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </a>
+      </li>
+    </ul>
+
+    <!-- モバイルハンバーガーメニュー -->
+    <button class="mobile-menu-toggle md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5 bg-transparent border-none cursor-pointer" aria-label="メニューを開く">
+      <span class="hamburger-line w-6 h-0.5 bg-gray-700 dark:bg-white rounded transition-all duration-300"></span>
+      <span class="hamburger-line w-6 h-0.5 bg-gray-700 dark:bg-white rounded transition-all duration-300"></span>
+      <span class="hamburger-line w-6 h-0.5 bg-gray-700 dark:bg-white rounded transition-all duration-300"></span>
+    </button>
+  </div>
+
+  <!-- モバイルメニュー -->
+  <div class="mobile-menu md:hidden fixed top-16 left-0 w-full bg-white dark:bg-black border-b border-gray-200 dark:border-white shadow-lg max-h-0 overflow-hidden transition-all duration-300">
+    <ul class="list-none m-0 p-4 flex flex-col gap-2">
+      <li>
+        <a href="{{ "/" | relURL }}" class="block px-4 py-3 text-gray-700 dark:text-white font-medium rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+          Home
+        </a>
+      </li>
+      <li class="mobile-has-submenu">
+        <a href="{{ "/article/content" | relURL }}" class="mobile-nav-link block px-4 py-3 text-gray-700 dark:text-white font-medium rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400 flex items-center justify-between">
+          Content
+          <svg class="w-4 h-4 submenu-toggle-icon transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </a>
+        <ul class="mobile-submenu hidden list-none m-0 p-0 pl-4 mt-2 flex flex-col gap-2">
+          <li>
+            <a href="{{ "/article/" | relURL }}" class="block px-3 py-2 text-sm text-gray-700 dark:text-white rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+              Article
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/works/" | relURL }}" class="block px-3 py-2 text-sm text-gray-700 dark:text-white rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+              Works
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/earphones/" | relURL }}" class="block px-3 py-2 text-sm text-gray-700 dark:text-white rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+              Earphones
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/author/" | relURL }}" class="block px-3 py-2 text-sm text-gray-700 dark:text-white rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+              Author
+            </a>
+          </li>
+          <li>
+            <a href="{{ "/links/" | relURL }}" class="block px-3 py-2 text-sm text-gray-700 dark:text-white rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+              Links
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="{{ "/contact/" | relURL }}" class="block px-4 py-3 text-gray-700 dark:text-white font-medium rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+          Contact
+        </a>
+      </li>
+      <li>
+        <a href="{{ "/search/" | relURL }}" class="block px-4 py-3 text-gray-700 dark:text-white font-medium rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-blue-600 dark:hover:text-blue-400">
+          Search
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

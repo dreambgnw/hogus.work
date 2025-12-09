@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="photo-frame">
+    <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2674&auto=format&fit=crop" alt="Forest" class="slide-image active">
+    <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?q=80&w=2670&auto=format&fit=crop" alt="Space" class="slide-image">
+    <img src="https://images.unsplash.com/photo-1500462918d059-b1a0cb512f1d?q=80&w=2574&auto=format&fit=crop" alt="Light" class="slide-image">
+</div>
+
+<script>
+    // Slideshow
+    document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.slide-image');
+        let currentSlide = 0;
+        const slideInterval = 6000; 
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        if(slides.length > 1) {
+            setInterval(nextSlide, slideInterval);
+        }
+    });
+</script>
+{{ end }}

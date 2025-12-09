@@ -1,0 +1,52 @@
+<div class="fixed bottom-0 left-0 w-full z-50 border-t border-white/10 bg-black/80 backdrop-blur-md">
+    <div class="flex items-center justify-between px-6 py-4">
+        
+        <!-- Logo -->
+        <a href="/" class="font-serif text-xl font-bold tracking-wider text-white">
+            Lounge.
+        </a>
+
+        <!-- Icons -->
+        <div class="flex items-center gap-6">
+            
+            <!-- Search Trigger -->
+                            <button onclick="window.location.href='{{ "/search/" | relURL }}'" class="text-gray-400 hover:text-white transition-colors">                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+
+            <!-- Menu Trigger (Hamburger) -->
+            <button id="menu-btn" onclick="toggleMenu()" class="text-gray-400 hover:text-white transition-colors w-6 h-6 relative flex justify-center items-center z-50">
+                <div class="w-6 flex flex-col items-end gap-1.5 transition-all duration-300">
+                    <span id="line1" class="block w-6 h-0.5 bg-current transition-all duration-300 origin-center"></span>
+                    <span id="line2" class="block w-4 h-0.5 bg-current transition-all duration-300 origin-center"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-[#0a0a0a] transform translate-y-full transition-transform duration-500 ease-in-out flex flex-col">
+    
+    <!-- Menu Content Wrapper -->
+    <div class="flex-1 flex flex-col justify-center items-center pb-20 w-full">
+        
+        <!-- 
+           Menu Content from baseof.html's menu
+        -->
+        <div id="menu-container" class="w-full flex justify-center">
+            {{ partial "menu_content.html" . }}
+        </div>
+
+        <!-- Clock Area (Menu Footer) -->
+        <div class="mt-12 pt-12 border-t border-white/10 w-40 text-center">
+            <span id="clock-date" class="block text-xs text-gray-500 font-mono tracking-widest mb-1"></span>
+            <span id="clock-time" class="block text-sm text-gray-400 font-mono tracking-widest"></span>
+        </div>
+    </div>
+</div>
+
+<!-- 3. Search Overlay -->
+
+<!-- 4. Logic Script Removed, will be handled in baseof.html -->

@@ -1,0 +1,186 @@
+/* themes/hogusource-pico/assets/css/lounge.css */
+
+.site-container {
+    /* This will be a flex container on desktop */
+}
+
+@media (min-width: 768px) {
+    .site-container {
+        display: flex;
+    }
+}
+
+.text-area {
+    width: 30%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f5f5f5; /* Light grey background */
+    height: 100vh; /* Make left column full height */
+}
+
+.visual-wrapper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    height: 100vh; /* Make right column full height */
+}
+@media (min-width: 768px) {
+    .visual-wrapper {
+        width: 70%;
+    }
+}
+
+.site-logo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    display: block; /* Override Pico's default flex display */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: block;
+    margin-bottom: 10px; /* Add margin between items */
+}
+
+/* Mobile Menu Overlay Styles */
+#mobile-menu .menu-list {
+    text-align: center;
+    margin: 0;
+}
+#mobile-menu .menu-list a {
+    background-color: transparent;
+    border: none;
+    color: #9ca3af; /* gray-400 */
+    font-size: 1.5rem; /* text-2xl */
+    font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    letter-spacing: 0.1em; /* tracking-widest */
+    padding: 0.5rem 1rem;
+}
+#mobile-menu .menu-list a:hover {
+    background-color: transparent;
+    color: white;
+}
+#mobile-menu .has-submenu .submenu {
+    padding-left: 0;
+    margin-top: 0.5rem;
+    background-color: #111; /* Slightly different bg for submenu */
+    border-radius: 8px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+#mobile-menu .has-submenu .submenu a {
+    font-size: 1rem; /* text-base */
+    letter-spacing: 0.05em;
+}
+
+
+.sub-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+.sub-links li a {
+    text-decoration: none;
+    color: #777;
+}
+
+.clock-area {
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+#current-date {
+    display: block;
+}
+
+.photo-frame {
+    width: 100%;
+    height: 100%;
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    filter: grayscale(100%);
+}
+
+.slide-image.active {
+    opacity: 1;
+}
+
+.content-wrapper {
+    padding: 40px;
+    height: 100vh;
+    overflow-y: auto;
+    background-color: #fff; /* Add a white background for content pages */
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .text-area {
+        background-color: #1a1a1a;
+    }
+    .nav-links li a {
+        color: #f5f5f5;
+    }
+    .sub-links li a {
+        color: #999;
+    }
+    .clock-area {
+        color: #f5f5f5;
+    }
+    .content-wrapper {
+        background-color: #111; /* Dark background for content pages */
+        color: #f5f5f5;
+    }
+    .has-submenu .submenu {
+        background-color: #2a2a2a;
+        border-color: #444;
+    }
+}
+
+/* Mobile optimization removed here */
+
+/* Collapsible ToC */
+.toc-container.active .toc-content {
+    display: block;
+}
+.toc-container.active .toc-toggle .arrow {
+    transform: rotate(180deg);
+}
+.toc-content {
+    text-align: left;
+}
+
+/* Responsive YouTube Embeds */
+.youtube-responsive-container {
+    @apply relative overflow-hidden w-full mb-8 rounded-xl shadow-lg;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+.prose .youtube-responsive-container {
+    max-width: none; /* Override prose max-width */
+}
+
+.youtube-responsive-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}

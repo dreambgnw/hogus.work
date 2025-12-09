@@ -1,0 +1,83 @@
+@import "./style.css";
+@import "../../static/css/custom.css"; /* Import custom styles including author icon hover effect */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-serif antialiased;
+  }
+
+  /* Explicit dark mode styles for prose elements */
+  @media (prefers-color-scheme: dark) {
+    .prose h1:not([class~="not-prose"], [class~="not-prose"] *),
+    .prose h2:not([class~="not-prose"], [class~="not-prose"] *),
+    .prose h3:not([class~="not-prose"], [class~="not-prose"] *),
+    .prose p:not([class~="not-prose"], [class~="not-prose"] *),
+    .prose strong:not([class~="not-prose"], [class~="not-prose"] *) {
+      color: #E5E7EB; /* A light gray for readability */
+    }
+    .prose a:not([class~="not-prose"], [class~="not-prose"] *) {
+      color: #60A5FA; /* A slightly darker blue for links */
+    }
+
+    /* --- Dark Mode Table Styles --- */
+    .prose table:not([class~="not-prose"], [class~="not-prose"] *) {
+      border-color: #4B5563; /* gray-600 */
+    }
+    .prose thead th:not([class~="not-prose"], [class~="not-prose"] *) {
+      color: #E5E7EB; /* gray-200 */
+      background-color: #374151; /* gray-700 */
+      border-bottom-color: #4B5563; /* gray-600 */
+    }
+    .prose tbody tr:not([class~="not-prose"], [class~="not-prose"] *) {
+      border-bottom-color: #4B5563; /* gray-600 */
+    }
+    /* Default background for all body cells */
+    .prose tbody td:not([class~="not-prose"], [class~="not-prose"] *) {
+      color: #D1D5DB; /* gray-300 */
+      background-color: #1F2937; /* gray-800 */
+    }
+    /* First column has a different background */
+    .prose tbody td:first-child:not([class~="not-prose"], [class~="not-prose"] *) {
+      background-color: #374151; /* gray-700 */
+    }
+    /* Hover styles for the entire row */
+    .prose tbody tr:hover td:not([class~="not-prose"], [class~="not-prose"] *) {
+      background-color: #4B5563; /* gray-600 */
+    }
+  }
+}
+
+@layer components {
+  /* ハンバーガーメニューのアニメーション */
+  .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+    @apply rotate-45 translate-y-2;
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+    @apply opacity-0;
+  }
+
+  .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+    @apply -rotate-45 -translate-y-2;
+  }
+
+  /* モバイルメニューの開閉 */
+  .mobile-menu.active {
+    @apply max-h-screen;
+  }
+
+  .mobile-submenu.active {
+    @apply block;
+  }
+
+  .submenu-toggle-icon.active {
+    @apply rotate-180;
+  }
+}

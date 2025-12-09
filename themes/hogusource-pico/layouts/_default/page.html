@@ -1,0 +1,37 @@
+{{ define "main" }}
+<article class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+  <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+    {{ .Title }}
+  </h1>
+
+  <div class="flex gap-6 text-sm text-gray-500 dark:text-white mb-8">
+    <p><strong>Publish:</strong> {{ .Date.Format "2006-01-02" }}</p>
+    <p><strong>Edit:</strong> {{ .Lastmod.Format "2006-01-02" }}</p>
+  </div>
+
+  {{ with .Params.image }}
+    <div class="mb-8 rounded-xl overflow-hidden shadow-lg">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="w-full h-auto object-cover">
+    </div>
+  {{ end }}
+
+  <div class="prose prose-lg dark:prose-invert max-w-none text-gray-800 dark:text-gray-200 leading-relaxed">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+  <div class="mt-12 pt-8 border-t border-gray-200 dark:border-white">
+    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Tags</h4>
+    <ul class="flex flex-wrap gap-2">
+      {{ range . }}
+        <li>
+          <a href="/tags/{{ . | urlize }}" class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded-full text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+            #{{ . }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+</article>
+{{ end }}

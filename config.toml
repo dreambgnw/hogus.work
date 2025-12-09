@@ -1,5 +1,5 @@
 baseURL = 'http://hogus.work/'
-theme = "hogusource-tailwind"
+theme = "hogusource-pico"
 languageCode = "ja"
 title = "QUICK INSTANT"
 [outputs]
@@ -16,7 +16,6 @@ term = ["HTML", "RSS"]
     guessSyntax = false
     hl_Lines = ""
     tabWidth = 4
-    # ⬇ コレ！
     noCopyButton = true
 [markup.goldmark.renderer]
 unsafe = true

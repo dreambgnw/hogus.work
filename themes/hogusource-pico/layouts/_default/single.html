@@ -1,0 +1,85 @@
+{{ define "main" }}
+<main>
+  <div class="grid">
+    <!-- サイドプロフィール -->
+    <aside>
+      <article>
+        {{ with .Params.author_image }}
+        <img src="{{ . }}" alt="{{ $.Params.author }}">
+        {{ end }}
+        <h3>{{ .Params.author }}</h3>
+        <p>{{ .Params.author_desc }}</p>
+        <button>＋フォロー</button>
+      </article>
+    </aside>
+
+    <!-- 本文エリア -->
+    <article>
+      <!-- 前の記事・次の記事（上部） -->
+      <nav>
+        <ul>
+          <li>
+            {{ with .PrevInSection }}
+              <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+            {{ end }}
+          </li>
+          <li>
+            {{ with .NextInSection }}
+              <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+            {{ end }}
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 動画 or 画像 -->
+      {{ if .Params.featured_video }}
+      <div>
+        <iframe src="{{ .Params.featured_video }}" frameborder="0" allowfullscreen></iframe>
+      </div>
+      {{ else if .Params.featured_image }}
+      <div>
+        <img src="{{ .Params.featured_image }}" alt="{{ .Title }}">
+      </div>
+      {{ end }}
+
+      <!-- タイトル・本文 -->
+      <h1>{{ .Title }}</h1>
+      <small>
+        <span>{{ .Date.Format "2006年1月2日 15:04" }}</span>
+        {{ with .Params.category }}
+          <span> / {{ . }}</span>
+        {{ end }}
+      </small>
+
+      <div>
+        {{ .Content }}
+      </div>
+
+      <!-- タグ -->
+      {{ with .Params.tags }}
+      <small>
+        {{ range . }}
+        <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+        {{ end }}
+      </small>
+      {{ end }}
+
+      <!-- 前の記事・次の記事（下部） -->
+      <nav>
+        <ul>
+          <li>
+            {{ with .PrevInSection }}
+              <a href="{{ .RelPermalink }}">← {{ .Title }}</a>
+            {{ end }}
+          </li>
+          <li>
+            {{ with .NextInSection }}
+              <a href="{{ .RelPermalink }}">{{ .Title }} →</a>
+            {{ end }}
+          </li>
+        </ul>
+      </nav>
+    </article>
+  </div>
+</main>
+{{ end }}
