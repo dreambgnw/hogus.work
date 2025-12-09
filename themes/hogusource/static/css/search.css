@@ -1,0 +1,136 @@
+/* ==========================================
+   🩵 Suiran Search Page
+   Calm Water × Harenosora
+========================================== */
+
+/* --- Page Container --- */
+.search-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  text-align: left;
+}
+
+/* --- Heading --- */
+.search-section h1 {
+  font-family: "Harenosora Mincho", "Noto Serif JP", serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* --- Search Bar --- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.search-input {
+  flex: 1;
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: #000000;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(91, 167, 200, 0.25);
+}
+
+/* --- Search Results --- */
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.search-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  text-decoration: none;
+  color: var(--text-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.search-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(91, 167, 200, 0.25);
+}
+
+.search-card h2 {
+  font-family: "Harenosora Mincho", serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  color: var(--text-color);
+}
+.search-card p {
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.95rem;
+  color: var(--subtext-color);
+  line-height: 1.8;
+}
+
+/* --- No Results Message --- */
+.no-results {
+  font-family: "Noto Serif JP", serif;
+  font-size: 1rem;
+  color: var(--subtext-color);
+  text-align: left;
+  margin-top: 2rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .search-section {
+    padding: 60px 16px 80px;
+  }
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* --- Decorative Light Reflection --- */
+.search-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(circle at 30% 20%, rgba(91,167,200,0.05), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.search-card:hover::before {
+  opacity: 1;
+}
+
+/* --- Animation for new results --- */
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-card.is-entering {
+  animation: card-enter 0.4s ease-out forwards;
+}

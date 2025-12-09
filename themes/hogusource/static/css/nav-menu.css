@@ -1,0 +1,470 @@
+/* ==========================================
+   Suiran Theme — Mobile Navigation
+   （Harenosora × 水と風のトーン）
+========================================== */
+
+/* --- Header Base --- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--bg-color);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid var(--bg-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  z-index: 1000;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  box-sizing: border-box; /* Added */
+}
+
+.header-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the logo */
+  height: 100%;
+  padding: 0 24px;
+  box-sizing: border-box; /* Added */
+}
+
+
+
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo a {
+  color: var(--text-color);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+.logo a:hover {
+  color: var(--link-color);
+  opacity: 0.85;
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+}
+
+.logo-container img {
+  height: 100%;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 5;
+  margin-bottom: 5;
+}
+
+/* --- Hamburger Menu Toggle --- */
+.menu-toggle {
+  position: absolute;
+  left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-color);
+  border-radius: 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+/* --- Navigation Drawer --- */
+.center-menu {
+  position: fixed;
+  top: 60px; /* Move below header */
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 80vw;
+  height: calc(100% - 60px); /* Adjust height */
+  
+  background: var(--bg-color);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid var(--bg-color);
+  box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+  
+  z-index: 10000;
+  
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.center-menu.active {
+  transform: translateX(0);
+}
+
+/* --- Background Overlay --- */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 9998; /* Below the menu button and drawer */
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* --- Drawer Content --- */
+.center-menu-content {
+  height: 100%;
+  overflow-y: auto;
+background: var(--bg-color);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid var(--bg-color);
+  box-shadow: -2px 0 20px rgba(0,0,0,0.08);      /* 少し浮かせる影 */
+}
+
+
+
+
+
+.menu-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 0 25px;
+}
+
+/* --- New Menu List Styles --- */
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-list li,
+.submenu li {
+  margin-bottom: 0;
+  border-bottom: none; /* Explicitly remove borders */
+}
+
+.menu-list a,
+.submenu a {
+  display: block;
+  padding: 12px 25px;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-bottom: none; /* Explicitly remove borders */
+}
+
+.menu-list a:hover,
+.submenu a:hover {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.submenu {
+  list-style: none;
+  margin: 0 0 10px;
+  padding-left: 20px; /* Indent submenu items */
+}
+
+.submenu a {
+  font-size: 0.95rem;
+  color: var(--subtext-color);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Ensure no border on the last item */
+.menu-list li:last-child,
+.submenu li:last-child {
+  border-bottom: none;
+}
+.menu-list li:last-child a,
+.submenu li:last-child a {
+  border-bottom: none;
+}
+
+.submenu-header a {
+  font-weight: 700; /* Make main section headers bold */
+}
+
+/* --- Menu Items --- */
+.dropdown-menu .menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.dropdown-menu .menu-list a {
+  display: block;
+  width: 200px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--text-color);
+  background: transparent; /* Changed to transparent */
+  border: 1px solid var(--border-color);
+  font-weight: 500;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.dropdown-menu .menu-list a:hover {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
+/* --- Close Interaction --- */
+.center-menu.active ~ .menu-fab,
+.menu-fab.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.menu-fab.menu-open {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ===============================
+   🌊 Unified Submenu (Same width/height as parent)
+=============================== */
+
+/* メニューリスト全体 */
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* すべてのメニューボタン（親・子共通） */
+.menu-list a,
+.submenu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 260px;            /* 👈 親と子で完全一致 */
+  height: 48px;            /* 👈 高さも固定で統一 */
+  background: transparent; /* Changed to transparent */
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+/* ホバー効果（共通） */
+.menu-list a:hover,
+.submenu a:hover {
+  background: transparent; /* Changed to transparent */
+  color: var(--link-color);
+  border-color: var(--accent-color);
+}
+
+/* サブメニュー */
+.submenu {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 👈 親と同じ中央配置 */
+  gap: 10px;
+}
+
+/* --- Theme Toggle --- */
+.theme-toggle {
+  position: absolute;
+  right: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.theme-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor; /* Ensure SVG color matches text color */
+}
+
+/* --- Header Base 修正なし --- */
+
+/* --- Header Inner（ロゴを自然に中央へ） --- */
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ロゴを中央に集める */
+  height: 100%;
+  padding: 0 24px;
+  position: relative;
+}
+
+/* --- Logo --- */
+.logo-container {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ロゴ画像の上下 margin を統一 */
+.logo-container img {
+  height: 100%;
+  width: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* 不要な absolute を削除（中央配置が崩れる原因） */
+.logo {
+  position: static;
+  transform: none;
+}
+
+
+
+/* ============================
+   📌 ヘッダー側ロゴは非表示
+============================ */
+.site-header .logo,
+.site-header .logo-container {
+  display: none !important;
+}
+
+/* ============================
+   📌 メニュー内ロゴ
+============================ */
+.menu-logo {
+  width: 100%;
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ロゴ画像（共通） */
+.menu-logo img {
+  height: 80px;    /* ← あなたの希望サイズ */
+  width: auto;
+  user-select: none;
+  transition: all 0.25s ease;
+}
+
+/* Light ロゴ */
+.menu-logo-light {
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+}
+
+/* Dark ロゴ（白線を美しく見せる調整） */
+.menu-logo-dark {
+  display: none;
+  filter:
+    drop-shadow(0 1px 2px rgba(255,255,255,0.25))
+    drop-shadow(0 0 6px rgba(255,255,255,0.18));
+}
+
+/* テーマ切替 */
+html.dark-theme .menu-logo-light {
+  display: none;
+}
+html.dark-theme .menu-logo-dark {
+  display: block;
+}
+
+/* ▼ メニュー内ロゴの余白を圧縮 */
+.menu-logo {
+  padding: 12px 0 8px;
+}
+
+/* ▼ ロゴの高さを70pxに調整（見た目ほぼ80と同じ） */
+.menu-logo img {
+  height: 70px;
+}
+
+/* ▼ メニューリストの余白を圧縮 */
+.menu-list {
+  padding: 12px 0;
+  gap: 8px;
+}
+
+
+
+/* ============================
+   ❄️ すりガラス風メニュー
+============================ */
+.center-menu {
+  /* Liquid Glass effect moved to .center-menu-content */
+}
+
+/* Dark用すりガラス（黒ミルキー） */
+html.dark-theme .center-menu {
+  /* Liquid Glass effect moved to .center-menu-content */
+}
+
+html.dark-theme .center-menu-content {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: -2px 0 20px rgba(0,0,0,0.45);
+}
+
+.site-header {
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid rgba(var(--bg-rgb), 0.1);
+}
+
+

@@ -1,0 +1,35 @@
+{
+  "names": {
+    "me": "ba203c6bc6eb1cc30d5a0722fe9b796a178c75e86ae47067d978aef2ab5eea04",
+    "old": "682973ab3781a410a1355a374d60d340b1d9a12614995ab624d4f9b76413d633",
+    "sub": "8937f508a305d855daa0afc74fe53561e77d414a4fa798f8963ae073f7b758b7"
+  },
+  
+  "relays": {
+    "ba203c6bc6eb1cc30d5a0722fe9b796a178c75e86ae47067d978aef2ab5eea04": [
+      "wss://nrelay-jp.c-stellar.net/" ,
+       "wss://nostream.ocha.one/" ,
+      "wss://relay-jp.haniwar.com/" ,
+      "wss://nostr.compile-error.net/" ,
+      "wss://nostr-relay.h3z.jp/"
+    ]
+  },
+  "relays": {
+    "682973ab3781a410a1355a374d60d340b1d9a12614995ab624d4f9b76413d633": [
+      "wss://nrelay-jp.c-stellar.net/" ,
+       "wss://nostream.ocha.one/" ,
+      "wss://relay-jp.haniwar.com/" ,
+      "wss://nostr.compile-error.net/" ,
+      "wss://nostr-relay.h3z.jp/"
+    ]
+  },
+  "relays": {
+    "8937f508a305d855daa0afc74fe53561e77d414a4fa798f8963ae073f7b758b7": [
+      "wss://nrelay-jp.c-stellar.net/" ,
+       "wss://nostream.ocha.one/" ,
+      "wss://relay-jp.haniwar.com/" ,
+      "wss://nostr.compile-error.net/" ,
+      "wss://nostr-relay.h3z.jp/"
+    ]
+  }
+}

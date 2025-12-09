@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="author-container">
+  <div class="author-profile">
+    {{ if .Params.image }}
+    <img src="{{ .Params.image }}" alt="{{ .Title }}" class="author-image">
+    {{ end }}
+    <div class="author-info">
+      <h1 class="author-name">{{ .Title }}</h1>
+      {{ if .Params.handle }}
+      <p class="author-handle">@{{ .Params.handle }}</p>
+      {{ end }}
+      {{ if .Params.link }}
+      <p class="author-link">
+        <a href="{{ .Params.link }}" target="_blank">{{ .Params.link }}</a>
+      </p>
+      {{ end }}
+      {{ if .Params.note }}
+      <p class="author-note">{{ .Params.note }}</p>
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="author-section">
+    <h3>スキル</h3>
+    <ul>
+      {{ range .Params.skills }}
+      <p>{{ . }}</p>
+      {{ end }}
+    </ul>
+  </div>
+
+  <div class="author-section">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

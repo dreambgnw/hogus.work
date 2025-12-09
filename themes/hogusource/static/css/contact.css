@@ -1,0 +1,45 @@
+.contact-section {
+  max-width: 720px;
+  margin: 0 auto 80px;
+  padding: 20px; /* ← Articleと同じ */
+  padding-top: 60px; /* Added to account for fixed header */
+  text-align: left;
+}
+
+.contact-section h1 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  color: var(--text-color);
+}
+
+
+/* 段落 */
+.contact-section p {
+  margin-bottom: 24px;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* ボタン配置を左寄せに */
+.contact-link {
+  text-align: left;
+}
+
+/* ボタン自体のスタイルはそのまま */
+.contact-button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 24px;
+  background: #4daff4;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.contact-button:hover {
+  background: #ffffff;
+  color: #4daff4
+}

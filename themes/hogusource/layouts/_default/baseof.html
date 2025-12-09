@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .Title }}{{ .Title }} | {{ end }}QUICK INSTANT</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}hogusource portfolio and articles{{ end }}">
+  <link rel="icon" href="/img/favicon.png">
+
+
+
+  <!-- 共通CSS --> 
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/content-unified.css">
+  <link rel="stylesheet" href="/css/button.css">
+  <link rel="stylesheet" href="/css/nav-menu.css">
+  <link rel="stylesheet" href="/css/author.css">
+  <link rel="stylesheet" href="/css/links.css">
+  <link rel="stylesheet" href="/css/search.css">
+  <link rel="stylesheet" href="/css/contact.css">
+  <link rel="stylesheet" href="/css/single.css">
+  <link rel="stylesheet" href="/css/auth-anim.css">
+  <link rel="stylesheet" href="/css/loader.css">
+
+  <!-- Code block design -->
+   <link rel="stylesheet" href="/css/code.css">
+
+  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ block "head" . }}{{ end }}
+
+</head>
+
+
+<body class="{{ with .Params.bgTone }}bg-{{ . }}{{ else }}bg-mix{{ end }}">
+  <!-- ローディングオーバーレイ -->
+  <div id="loader-overlay">
+    <div class="loader-ring"></div>
+    <div class="loader-bar">
+      <div class="loader-bar-inner"></div>
+    </div>
+    <img src="/img/1000010248.png" class="loader-logo">
+  </div>
+
+  <div class="page-bg" style="background-image: url('/img/bg/home.png');"></div>
+  <div class="page-bg-overlay"></div>
+
+  {{ partial "header.html" . }}
+
+  <main id="main-content">
+      {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+  {{ partial "menu.html" . }}
+
+  <!-- 共通JS -->
+  <script src="/js/script.js" defer></script>
+  <script src="/js/nav-menu.js" defer></script>
+  <script src="/js/code.js" defer></script>
+  <script src="/js/load.js" defer></script>
+
+
+</body>
+</html>

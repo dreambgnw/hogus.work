@@ -1,0 +1,42 @@
+{{ $img := .Page.Resources.GetMatch (.Destination) | default (resources.Get (.Destination)) }}
+{{ if $img }}
+  {{ $widths := slice 320 640 1280 1920 }}
+  {{ $srcset := "" }}
+  {{ range $idx, $width := $widths }}
+    {{ if gt $img.Width $width }}
+      {{ $resized := $img.Resize (printf "%dx" $width) }}
+      {{ $srcset = printf "%s%s %dw," $srcset $resized.RelPermalink $width }}
+    {{ else if eq $idx 0 }}
+      {{ $resized := $img.Resize (printf "%dx" $img.Width) }}
+      {{ $srcset = printf "%s%s %dw," $srcset $resized.RelPermalink $img.Width }}
+    {{ end }}
+  {{ end }}
+  {{ $src := $img.RelPermalink }}
+  {{ if gt (len $srcset) 0 }}
+<a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer">
+    <img
+      src="{{ $src }}"
+      srcset="{{ strings.TrimSuffix "," $srcset }}"
+      sizes="(max-width: 640px) 100vw, 1280px"
+      alt="{{ .Text }}"
+      loading="lazy"
+      width="{{ $img.Width }}"
+      height="{{ $img.Height }}"
+    >
+  </a>
+  {{ else }}
+  <a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer">
+    <img
+      src="{{ $src }}"
+      alt="{{ .Text }}"
+      loading="lazy"
+      width="{{ $img.Width }}"
+      height="{{ $img.Height }}"
+    >
+  </a>
+  {{ end }}
+{{ else }}
+<a href="{{ .Destination | safeURL }}" target="_blank" rel="noopener noreferrer">
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" loading="lazy">
+</a>
+{{ end }}

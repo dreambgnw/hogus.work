@@ -1,0 +1,31 @@
+{{ define "main" }}
+<article class="post">
+  <h1>{{ .Title }}</h1>
+
+  <div class="article-meta">
+    <p><strong>Publish:</strong> {{ .Date.Format "2006-01-02" }}</p>
+    <p><strong>Edit:</strong> {{ .Lastmod.Format "2006-01-02" }}</p>
+  </div>
+
+  {{ with .Params.image }}
+    <div class="post-image">
+      <img src="{{ . | relURL }}" alt="{{ $.Title }}">
+    </div>
+  {{ end }}
+
+  <div class="post-body">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.tags }}
+  <div class="post-tags">
+    <h4>Tags</h4>
+    <ul>
+      {{ range . }}
+        <li>{{ . }}</li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+</article>
+{{ end }}

@@ -1,0 +1,34 @@
+<div class="code-wrapper">
+  <div class="code-header card-glass">
+    <span class="code-lang">markdown</span>
+    <button class="copy-btn">⧉</button>
+  </div>
+
+  <pre><code>{{ .Inner | safeHTML }}</code></pre>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.querySelectorAll(".code-wrapper").forEach((wrapper) => {
+
+    const btn = wrapper.querySelector(".copy-btn");
+    const codeBlock = wrapper.querySelector("code");
+
+    if (!btn || !codeBlock) return;
+
+    btn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(codeBlock.textContent);
+
+      btn.classList.add("copied");
+      btn.textContent = "✓";
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.textContent = "⧉";
+      }, 1200);
+    });
+
+  });
+
+});
+</script>

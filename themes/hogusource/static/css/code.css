@@ -1,0 +1,49 @@
+/* ================================
+   📦 Code Block with Copy Button
+   Glass Card + Markdown Label UI
+================================ */
+
+.code-wrapper {
+  overflow: hidden;
+  margin: 1.5rem 0;
+}
+
+/* --- Header --- */
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+.code-header .lang-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.copy-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity .2s ease;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+}
+
+/* --- Code body --- */
+.code-body pre {
+  margin: 0;
+  padding: 14px;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  background: transparent !important; /* Hugo の既定色を無効化 */
+}

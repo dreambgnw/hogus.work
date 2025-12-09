@@ -1,0 +1,41 @@
+<!-- menu.html -->
+<div class="nav-overlay"></div>
+
+
+<!-- Navigation Drawer -->
+
+
+<div class="center-menu">
+
+
+  <div class="center-menu-content">
+
+
+
+    <hr class="menu-divider">
+    <ul class="menu-list">
+      <li><a href="{{ "/" | relURL }}">Home</a></li>
+
+      <!-- Content セクション -->
+      <li class="has-submenu">
+        <div class="submenu-header">
+          <a href="{{ "/article/content" | relURL }}" class="submenu-link">Content</a>
+        </div>
+
+        <ul class="submenu">
+          <li><a href="{{ "/article/" | relURL }}">Article</a></li>
+          <li><a href="{{ "/works/" | relURL }}">Works</a></li>
+          <li><a href="{{ "/earphones/" | relURL }}">Earphones</a></li>
+          <li><a href="{{ "/author/" | relURL }}">Author</a></li>
+          <li><a href="{{ "/links/" | relURL }}">Links</a></li>
+        </ul>
+      </li>
+
+
+      <li><a href="{{ "/contact/" | relURL }}">Contact</a></li>
+      <li><a href="{{ "/search/" | relURL }}">Search</a></li>
+
+
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shun Tonegawa / hogusource</title>
+    <meta name="robots" content="noindex, follow">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <meta property="og:title" content="Shun Tonegawa / hogusource" />
+    <meta property="og:description" content="画像制作とデザインを中心としたポートフォリオサイトです。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hogus.work" />
+    <meta name="twitter:card" content="summary_large_image" />
+</head>
+<body>
+
+    <header id="main-header" class="header">
+        <div class="container-fluid">
+            <nav class="header-nav">
+                <a href="#home" class="text-light fw-bold" style="font-size: 1.5rem; text-decoration: none;">
+                    Shun Tonegawa
+                </a>
+                
+                <button id="mobile-menu-button" class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+                
+                <div id="navbarNav" class="nav-links">
+                    <ul>
+                        <li><a href="#whoami" class="fw-medium">Who Am I</a></li>
+                        <li><a href="#product" class="fw-medium">Products</a></li>
+                        <li><a href="#use" class="fw-medium">Use Products</a></li>
+                        <li><a href="#contact" class="fw-medium">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        
+        <div id="hero-slideshow" class="slideshow-container">
+            <div id="slide-1" class="slide" 
+                 style="background-image: url('https://media.ffnet.work/takuroff.jpg');">
+            </div>
+            <div id="slide-2" class="slide" 
+                 style="background-image: url('https://image.nostr.build/8636921fe8365de9cde42322bbb66b9b5bc70e10635afbc65b877e8a186c8e0b.png');">
+            </div>
+            <div id="slide-3" class="slide" 
+                 style="background-image: url('https://image.nostr.build/6e183b16bdce010f396a9d9a1b603ca3f0c9d18359402eeae2f7ed2d20b1054d.png');">
+            </div>
+            
+            <div class="overlay"></div>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="hero-content">
+                
+                <div id="main-catchphrase-block" style="opacity: 0; transition: opacity 500ms;">
+                    <h1 id="main-catchphrase" class="hero-title fw-bold text-light mb-2 lh-1" style="font-size: 4rem;">
+                        "偶然"
+                        <span id="wo-char" style="transition: all 500ms; opacity: 0;">を</span><br>
+                        "感動"
+                        <span id="ni-char" style="transition: all 500ms; opacity: 0;">に</span>
+                    </h1>
+                    
+                    <p id="identity-after-h1" class="text-light fw-medium" style="opacity: 0; transition: opacity 500ms; text-align: end; font-size: 0.875rem;">
+                        Shun Tonegawa / hogusource
+                    </p>
+
+                    <p id="hero-description" class="text-muted" style="margin-top: var(--spacing-md); font-size: 1.25rem; opacity: 0; transition: opacity 1000ms;">
+                        作品から趣味まで、全部見れます。
+                    </p>
+                    
+                    <div id="hero-buttons" class="button-group" style="opacity: 0; transition: opacity 1000ms;">
+                        <a href="#product" class="custom-button btn-primary-style">
+                            制作物を見るなら
+                        </a>
+                        <a href="#contact" class="custom-button btn-outline-style">
+                            連絡するなら
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section id="whoami" class="section-padding" style="border-top: 1px solid var(--color-border);">
+        <div class="container-fluid">
+            <div class="section-grid">
+                
+                <div class="section-header sticky-md-top">
+                    <h2 class="text-muted" style="font-size: 0.875rem; margin-bottom: 0.5rem; text-transform: uppercase;">My Profile</h2>
+                    <h3 class="text-light fw-bold" style="font-size: 2.5rem;">Who Am I</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md);">
+                    
+                    <div class="card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h4 class="text-light fw-semibold" style="font-size: 1.5rem; margin-bottom: 0.5rem;">主なスキル</h4>
+                        <p class="text-light" style="font-size: 0.875rem;">
+                            GIMPでの画像制作がメインです、偶然生まれたものが良かったりします。
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                        <h4 class="text-light fw-semibold" style="font-size: 1.5rem; margin-bottom: 0.5rem;">趣味と探求</h4>
+                        <p class="text-light" style="font-size: 0.875rem;">
+			ラジオを聴くこと、中古屋巡り、イヤホン収集など好きです<br>
+			また、アイドルマスターなどゲームも好きです。
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                        </div>
+                        <h4 class="text-light fw-semibold" style="font-size: 1.5rem; margin-bottom: 0.5rem;">今後の目標</h4>
+                        <p class="text-light" style="font-size: 0.875rem;">
+                            これまでの活動をまとめた、しっかりとしたポートフォリオを構築したいと考えています。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="section-padding" style="border-top: 1px solid var(--color-border);">
+        <div class="container-fluid">
+            <div class="section-grid" style="grid-template-columns: 1fr;">
+                <div class="section-header" style="width: 100%; margin-bottom: var(--spacing-lg);">
+                    <h2 class="text-muted" style="font-size: 0.875rem; text-transform: uppercase;">My Works</h2>
+                    <h3 class="text-light fw-bold" style="font-size: 2.5rem; margin-bottom: 1rem;">Products</h3>
+                    <p class="lead text-light">私が作り上げた制作物を紹介します</p>
+                </div>
+            </div>
+
+            <div class="product-item">
+                <div class="product-image-wrapper">
+                    <img src="https://image.nostr.build/aa875ac99ca1d41e2395828ca964f27716525c25c3482ce6815b45aaabc4aba1.png" onerror="this.onerror=null; this.src='https://placehold.co/1200x800/222/999?text=Image+Load+Failed';" alt="Nostrasia2025の勝手に壁紙">
+                </div>
+                <div class="product-content">
+                    <span class="text-muted fw-medium" style="font-size: 0.875rem; display: block; margin-bottom: 0.5rem;">PROJECT 01</span>
+                    <h4 class="text-light fw-bold" style="font-size: 1.75rem; margin-bottom: 0.75rem;">Nostrasia2025の勝手に壁紙</h4>
+                    <p class="text-muted fw-medium" style="font-size: 0.875rem; margin-bottom: 1rem;">使用技術: レンズぼかし、GIMPによるレイヤー合成</p>
+                    <p class="text-light" style="margin-bottom: 1.5rem;">
+		    Nostrasia2025の会場内PC壁紙の一つを、思いつきで作ってみました。<br>
+		    この作品は、当日会場にてPCの壁紙として掲載される予定です。
+                    </p>
+                    <a href="https://nostrasia.com" class="custom-button btn-outline-style" style="padding: 0.5rem 1rem; font-size: 0.875rem;">
+                        公式HPを見る &rarr;
+                    </a>
+                </div>
+            </div>
+    </section>
+
+    <section id="use" class="section-padding" style="border-top: 1px solid var(--color-border);">
+        <div class="container-fluid">
+            <div class="section-grid">
+                
+                <div class="section-header sticky-md-top">
+                    <h2 class="text-muted" style="font-size: 0.875rem; margin-bottom: 0.5rem; text-transform: uppercase;">Tools I Use</h2>
+                    <h3 class="text-light fw-bold" style="font-size: 2.5rem;">使用<br>機器</h3>
+                </div>
+
+                <div>
+                    <div class="scroll-container">
+                        
+                        <div class="card">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+                            <p class="text-light fw-semibold" style="font-size: 1.25rem;">M1 Pro Macbook Pro</p>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.5rem;">RAM: 16GB / ROM: 512GB<br>高速で安定した作業環境。</p>
+                        </div>
+
+                        <div class="card">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎨</div>
+                            <p class="text-light fw-semibold" style="font-size: 1.25rem;">GIMP</p>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.5rem;">慣れ親しんだ最高のフリーソフト。<br>全てのデザインの始まり。</p>
+                        </div>
+
+                        <div class="card">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📱</div>
+                            <p class="text-light fw-semibold" style="font-size: 1.25rem;">Google Pixel 9a</p>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.5rem;">シンプル、これこそが正義。</p>
+                        </div>
+
+                        <div class="card">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎧</div>
+                            <p class="text-light fw-semibold" style="font-size: 1.25rem;">MOONDROP 竹 Chu2</p>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-top: 0.5rem;">一番好きなリケーブル対応イヤホン。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding" style="border-top: 1px solid var(--color-border); background-color: var(--color-bg);">
+        <div class="container-fluid" style="text-align: center;">
+            <h2 class="text-light fw-bold" style="font-size: 2.5rem; margin-bottom: 0.75rem;">Contact / 連絡先</h2>
+            <p class="text-muted" style="font-size: 1.25rem; margin-bottom: 3rem;">
+                メッセージ、コラボレーション、ご質問など、お気軽にご連絡ください。
+            </p>
+
+            <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 0;">
+                <div style="text-align: start;">
+                    <p class="fw-bold text-light">メールアドレス</p>
+                    <p class="text-muted"><a href="mailto:me@ffnet.work" class="text-muted" style="text-decoration: underline; opacity: 0.7; font-size: 1.125rem;">me@ffnet.work</a></p>
+                </div>
+                <div style="text-align: start;">
+                    <p class="fw-bold text-light">SNS</p>
+                    <p class="text-muted"><a href="https://nostter.app/me@hogus.work" class="text-muted" style="text-decoration: underline; opacity: 0.7; font-size: 1.125rem;">@me</a></p>
+                </div>
+            </div>
+            
+            <p class="text-muted" style="margin-top: 2.5rem; font-size: 0.875rem;">
+                上記メールアドレスまたはSNSのダイレクトメッセージにてご連絡をお願いいたします。
+            </p>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container-fluid">
+		<p class="text-muted">&copy; 2025 hogusource,Shun Tonegawa. All rights reserved.<br>
+		Design by Gemini</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+

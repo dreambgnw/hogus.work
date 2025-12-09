@@ -1,0 +1,89 @@
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 240px;
+  height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  border-right: 1px solid #eee;
+}
+
+.sidebar .logo h2 {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.sidebar .nav a {
+  display: block;
+  color: #111;
+  text-decoration: none;
+  margin: 8px 0;
+}
+
+.sidebar .nav a:hover {
+  color: #4da3ff;
+}
+
+.sidebar-footer {
+  font-size: 0.8rem;
+  color: #777;
+  line-height: 1.4;
+  text-align: left;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-footer:hover {
+  opacity: 1;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 60px;
+  box-sizing: border-box;
+}
+
+/* Article */
+.article-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: inherit;
+}
+
+.article-thumb {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-left: 32px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.article-item:hover .article-thumb {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Footer removed */

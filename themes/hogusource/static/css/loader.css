@@ -1,0 +1,70 @@
+/* themes/hogusource/static/css/loader.css */
+
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Changed to white */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.8s ease-out; /* Smooth fade-out */
+}
+
+#loader-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border: 8px solid lightgray; /* Changed to lightgray */
+    border-top: 8px solid black; /* Changed to black */
+    border-radius: 50%;
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-bar {
+    width: 100%; /* Changed to 100% */
+    height: 8px;
+    background-color: lightgray; /* Changed to lightgray */
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+}
+
+.loader-bar-inner {
+    width: 0%;
+    height: 100%;
+    background-color: black; /* Changed to black */
+    animation: load 2s forwards ease-in-out; /* Adjusted to 2s for min display time */
+}
+
+@keyframes load {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+.loader-logo {
+    max-width: 120px;
+    height: auto;
+    margin-top: 30px;
+    opacity: 0; /* Hidden by default, shown by JS */
+    transition: opacity 0.5s ease-in;
+}
+
+

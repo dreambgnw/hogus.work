@@ -1,0 +1,258 @@
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+ 
+ body {
+     font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+     background-color: #f5f5f5;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     padding: 20px;
+     transition: background-color 0.3s ease;
+ }
+ 
+ .card {
+     background-color: #ffffff;
+     width: 100%;
+     max-width: 500px;
+     padding: 40px;
+     border: 1px solid #ddd;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+     transition: all 0.3s ease;
+ }
+ 
+ .header {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+     border-bottom: 2px solid #a03d47;
+     padding-bottom: 20px;
+     margin-bottom: 30px;
+ }
+ 
+ .profile-icon {
+     width: 80px;
+     height: 80px;
+     border-radius: 50%;
+     border: 2px solid #a03d47;
+     object-fit: cover;
+     flex-shrink: 0;
+ }
+ 
+ .name-section {
+     flex: 1;
+ }
+ 
+ .main-name {
+     font-size: 28px;
+     font-weight: bold;
+     color: #333;
+     margin-bottom: 8px;
+ }
+ 
+ .sub-name {
+     font-size: 16px;
+     color: #666;
+     margin-bottom: 8px;
+ }
+ 
+ .occupation {
+     font-size: 14px;
+     color: #a03d47;
+     font-weight: bold;
+ }
+ 
+ .info-section {
+     margin-bottom: 25px;
+ }
+ 
+ .info-label {
+     font-size: 12px;
+     color: #999;
+     margin-bottom: 5px;
+     text-transform: uppercase;
+ }
+ 
+ .info-value {
+     font-size: 16px;
+     color: #333;
+     margin-bottom: 15px;
+ }
+ 
+ .skills {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+ }
+ 
+ .skill-tag {
+     background-color: #f8f8f8;
+     border: 1px solid #a03d47;
+     color: #a03d47;
+     padding: 6px 12px;
+     border-radius: 4px;
+     font-size: 14px;
+     transition: all 0.3s ease;
+     cursor: default;
+ }
+ 
+ .skill-tag:hover {
+     background-color: #a03d47;
+     color: #fff;
+     transform: scale(1.05);
+ }
+ 
+ .contact-links {
+     display: grid;
+     grid-template-columns: repeat(6, 1fr);
+     gap: 15px;
+     margin-top: 30px;
+     padding-top: 20px;
+     border-top: 1px solid #eee;
+ }
+ 
+ .contact-item {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-decoration: none;
+     color: #333;
+     transition: opacity 0.3s;
+ }
+ 
+ .contact-item:hover {
+     opacity: 1;
+ }
+ 
+ .contact-item:hover .icon {
+     background-color: #a03d47;
+     color: #fff;
+     transform: scale(1.1);
+ }
+ 
+ .icon {
+     width: 40px;
+     height: 40px;
+     margin-bottom: 8px;
+     border: 1px solid #a03d47;
+     border-radius: 4px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 24px;
+     background-color: #fff;
+     font-family: 'Noto Color Emoji', sans-serif;
+     transition: all 0.3s ease;
+ }
+ 
+ .contact-label {
+     font-size: 12px;
+     color: #666;
+ }
+ 
+ @media (max-width: 480px) {
+     .card {
+         padding: 30px 20px;
+     }
+     
+     .header {
+         flex-direction: column;
+         text-align: center;
+     }
+     
+     .profile-icon {
+         width: 100px;
+         height: 100px;
+     }
+     
+     .main-name {
+         font-size: 24px;
+     }
+     
+     .skills {
+         justify-content: center;
+     }
+     
+     .contact-links {
+         grid-template-columns: repeat(3, 1fr);
+     }
+ }
+ 
+ @media print {
+     body {
+         background-color: #fff;
+         padding: 0;
+     }
+     
+     .card {
+         box-shadow: none;
+         border: none;
+         max-width: 100%;
+     }
+     
+     .contact-item {
+         color: #000;
+     }
+     
+     a {
+         text-decoration: none;
+     }
+ }
+ 
+ @media (prefers-color-scheme: dark) {
+     body {
+         background-color: #1a1a1a;
+     }
+     
+     .card {
+         background-color: #2d2d2d;
+         border-color: #444;
+         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+     }
+     
+     .header {
+         border-bottom-color: #a03d47;
+     }
+     
+     .main-name,
+     .info-value {
+         color: #e0e0e0;
+     }
+     
+     .sub-name,
+     .contact-label {
+         color: #b0b0b0;
+     }
+     
+     .info-label {
+         color: #888;
+     }
+     
+     .skill-tag {
+         background-color: #3d3d3d;
+         border-color: #a03d47;
+         color: #ff6b7a;
+     }
+     
+     .skill-tag:hover {
+         background-color: #a03d47;
+         color: #fff;
+     }
+     
+     .icon {
+         background-color: #3d3d3d;
+         border-color: #a03d47;
+     }
+     
+     .contact-item {
+         color: #e0e0e0;
+     }
+     
+     .contact-links {
+         border-top-color: #444;
+     }
+ }

@@ -1,0 +1,39 @@
+/* ============================
+   Global Image Behavior
+   (QUICK INSTANT)
+   画像を全ページでスムーズに読み込む
+   ============================ */
+
+/* すべてのサムネイル画像コンテナの共通設定 */
+.thumb,
+.content-thumb,
+.card-thumb,
+.section-thumb {
+  width: 100%;
+  height: 180px;           /* ページ全体で統一高さ */
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  background: rgba(255,255,255,0.08); /* 読み込み前の下地 */
+  backdrop-filter: blur(6px);
+}
+
+/* 画像の描画方法を全ページで統一 */
+.thumb img,
+.content-thumb img,
+.card-thumb img,
+.section-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* 常に綺麗にトリミング */
+  display: block;
+  transition: opacity .3s ease;
+  opacity: 0;
+}
+
+/* 読み込まれた瞬間に自然にフェードイン */
+.thumb img.loaded,
+.content-thumb img.loaded,
+.card-thumb img.loaded,
+.section-thumb img.loaded {
+  opacity: 1;
+}
