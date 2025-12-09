@@ -1,10 +1,18 @@
 {{ define "main" }}
-<div class="search-page-container px-4 py-8">
-    <h1 class="text-3xl font-bold mb-8">Search</h1>
+<section class="search-section px-4 py-8">
+  <h1 class="search-title text-3xl font-bold mb-8">Search</h1>
 
-    <div class="w-full max-w-md mx-auto">
-        <input type="text" id="search-input-page" placeholder="Search articles, works..." class="w-full bg-transparent border-b-2 border-gray-300 text-xl py-2 focus:outline-none focus:border-blue-500 font-serif placeholder-gray-600 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
-        <div id="search-results-page" class="mt-8"></div>
-    </div>
-</div>
+  <div class="search-bar w-full max-w-md mx-auto mb-8">
+    <input
+      id="search-input"
+      class="search-input w-full bg-transparent border-b-2 border-gray-300 text-xl py-2 focus:outline-none focus:border-blue-500 font-serif placeholder-gray-600 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+      type="text"
+      autocomplete="off"
+      placeholder="記事や作品のID、キーワードを入力してください。"
+    />
+  </div>
+
+  <p id="search-message" class="search-message text-gray-600 dark:text-gray-400 text-center mb-4"></p>
+  <div id="search-results" class="search-results w-full max-w-md mx-auto"></div>
+</section>
 {{ end }}

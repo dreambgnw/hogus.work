@@ -5,7 +5,8 @@
     "uri": "{{ $page.Permalink }}",
     "title": "{{ $page.Title }}",
     "content": {{ $page.PlainWords | jsonify }},
-    "summary": {{ $page.Summary | jsonify }}
+    "summary": {{ $page.Summary | jsonify }},
+    "image": "{{ $page.Params.image }}"
   }
 {{ end }}
 ]
