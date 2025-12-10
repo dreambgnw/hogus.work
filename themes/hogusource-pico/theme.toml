@@ -2,14 +2,14 @@ name = "Hogusource Pico"
 license = "MIT"
 licenselink = "https://opensource.org/licenses/MIT"
 description = "A clean, note-inspired Hugo theme refreshed with Tailwind CSS for articles, works, and portfolio pages."
-homepage = "https://dreambgnw.github.io/hoguswork/"
+homepage = "https://ffnet.work/"
 tags = ["minimal", "note", "portfolio", "clean", "responsive", "tailwind"]
 features = ["responsive", "mobile-nav", "author-page", "works", "articles"]
 min_version = "0.120.0"
 
 [author]
   name = "Shun Tonegawa"
-  homepage = "https://dreambgnw.github.io/hoguswork/"
+  homepage = "https://ffnet.work/"
 
 [params]
   accentColor = "#5ca9c9"
