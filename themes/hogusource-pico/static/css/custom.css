@@ -106,34 +106,89 @@ html[data-theme="dark"] .logo-dark {
   }
 }
 
-/* 縦書き TOC */
+/* ===========================================
+   D. カードUI（フラット）縦書き TOC
+=========================================== */
+
 .toc-vertical-container {
-  margin: 2rem 0;
-  padding: 1rem;
-  background: #f7f7f7;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
+  padding: 1.2rem 1rem;
+  max-width: 480px;
+  margin: 1.8rem 0;
 }
 
+/* トグルボタン */
+.toc-toggle {
+  cursor: pointer;
+}
+
+.toc-toggle .arrow {
+  font-size: 1.2rem;
+  color: #1e40af;
+}
+
+.toc-content.hidden {
+  display: none;
+}
+
+/* タイトル */
+.toc-vertical-container h2 {
+  margin: 0;
+  padding-bottom: 0.4rem;
+  font-size: 1.05rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* 縦書き本文 */
 .toc-vertical {
   writing-mode: vertical-rl;
   text-orientation: upright;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  padding: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  padding-right: 0.5rem;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
+/* リストリセット（フラット） */
 .toc-vertical ul,
 .toc-vertical li {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
+/* リンク */
 .toc-vertical a {
-  color: #3366cc;
+  color: #1e3a8a;
   text-decoration: none;
 }
 
 .toc-vertical a:hover {
   text-decoration: underline;
+}
+
+.toc-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-feature-settings: "vert", "vrt2"; /* 縦組向けグリフ */
+  line-height: 1.8;
+  font-size: 0.95rem;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.toc-vertical a {
+  text-decoration: none;
+}
+
+.toc-vertical ul,
+.toc-vertical li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

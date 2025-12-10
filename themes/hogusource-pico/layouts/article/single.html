@@ -30,19 +30,23 @@
     {{ end }}
   </header>
 
-  {{ if .Params.toc }}
-  <div class="toc-container mb-8">
-    <button class="toc-toggle text-xl font-bold text-gray-900 dark:text-white mb-4 flex justify-between items-center w-full">
-      <span>目次</span>
-      <span class="arrow transform transition-transform duration-200">▼</span>
-    </button>
-    <nav class="toc-content bg-white dark:bg-black border border-gray-200 dark:border-white rounded-xl p-6 shadow-md hidden">
-      <div class="prose prose-sm dark:prose-invert">
-        {{ .TableOfContents }}
-      </div>
-    </nav>
+{{ if .Params.toc }}
+<div class="toc-container toc-vertical-container mb-10">
+
+
+  <button class="toc-toggle w-full flex justify-between items-center mb-4">
+    <h2 class="text-lg font-semibold text-blue-900 dark:text-blue-300">目次</h2>
+    <span class="arrow transform transition-transform duration-200">▼</span>
+  </button>
+
+  <div class="toc-content hidden">
+    <div class="toc-vertical">
+      {{ .TableOfContents }}
+    </div>
   </div>
-  {{ end }}
+
+</div>
+{{ end }}
 
   <!-- 本文 -->
   <div class="prose prose-lg dark:prose-invert max-w-none leading-relaxed">
